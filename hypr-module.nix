@@ -1,0 +1,34 @@
+{ pkgs, config, ... }:
+{
+  imports = [
+    ./conf/hypr/scripts/scripts.nix
+  ];
+
+  wayland.windowManager.hyprland = {
+    enable = true;
+  };
+
+  # Dependencies :
+  home.packages = with pkgs; [
+    hyprpaper
+    hyprlock
+    hypridle
+    libnotify
+    swaynotificationcenter
+    rofi-wayland
+    brightnessctl
+    playerctl
+  ];
+
+  home.file = {
+    ".config/hypr" = {
+      source = ./conf/hypr/confFiles;
+      recursive = true;
+    };
+
+    ".config/rofi" = {
+      source = ./conf/rofi/confFiles;
+      recursive = true;
+    };
+  };
+}

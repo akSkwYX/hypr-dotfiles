@@ -1,0 +1,122 @@
+#!/usr/bin/env bash
+#
+# music_info — expose play status, metadata & cover art via playerctl
+#
+CACHE_COVER="/tmp/.music_cover.png"
+DEFAULT_COVER="$HOME/.config/eww/images/music.png"
+
+# 1) Pick a player: first running (Playing or Paused)
+PLAYER=""
+for p in $(playerctl -l 2>/dev/null); do
+  st=$(playerctl -p "$p" status 2>/dev/null)
+  if [[ $st == "Playing" || $st == "Paused" ]]; then
+    PLAYER="$p"
+    break
+  fi
+done
+
+# 2) Helpers
+get_status(){
+  local s
+  s=$(playerctl -p "$PLAYER" status)
+  if [[ $s == "Playing" ]]; then
+    #  = “pause” icon when playing
+    echo ""
+  else
+    #  = “play” icon when paused/stopped
+    echo ""
+  fi
+}
+
+get_title(){
+  playerctl -p "$PLAYER" metadata title \
+    2>/dev/null || echo "Offline"
+}
+
+get_artist(){
+  playerctl -p "$PLAYER" metadata artist \
+    2>/dev/null || echo ""
+}
+
+# position (seconds) and duration (seconds)
+get_position(){
+  # might return e.g. "12.345000"
+  playerctl -p "$PLAYER" position 2>/dev/null \
+    | awk '{printf "%d\n", $1}'
+}
+get_duration(){
+  # some players expose “mpris:length” in microseconds
+  # try %.metadata length, fall back to position metadata
+  local len
+  len=$(playerctl -p "$PLAYER" metadata mpris:length 2>/dev/null \
+        | awk '{printf "%d\n", $1/1000000}')
+  if [[ -z $len || $len -le 0 ]]; then
+    # fallback: some players put length in 'xesam:duration'
+    len=$(playerctl -p "$PLAYER" metadata xesam:duration 2>/dev/null \
+          | awk '{printf "%d\n", $1/1000000}')
+  fi
+  echo "${len:-0}"
+}
+
+# formatted times mm:ss
+fmt_time(){
+  local t=$1
+  ((m = t/60, s = t%60))
+  printf "%d:%02d" $m $s
+}
+
+# percentage progress (0–100)
+get_progress(){
+  local pos dur
+  pos=$(get_position)
+  dur=$(get_duration)
+  if (( dur > 0 )); then
+    awk -v p="$pos" -v d="$dur" 'BEGIN { printf "%d", (p/d)*100 }'
+  else
+    echo 0
+  fi
+}
+
+get_cover(){
+  # get artUrl
+  local url
+  url=$(playerctl -p "$PLAYER" metadata mpris:artUrl 2>/dev/null)
+  # file://
+  if [[ $url == file://* ]]; then
+    cp "${url#file://}" "$CACHE_COVER" 2>/dev/null && echo "$CACHE_COVER" && return
+  fi
+  # http(s):// → download
+  if [[ $url == http* ]]; then
+    curl -sL "$url" -o "$CACHE_COVER" && echo "$CACHE_COVER" && return
+  fi
+  # fallback
+  echo "$DEFAULT_COVER"
+}
+
+#seek to a given percent of the track
+seek_percent(){
+  local pct=$1
+  local dur
+  dur=$(get_duration)
+  local target=$(( (pct*dur) / 100 ))
+  playerctl -p "$PLAYER" position "$target"
+}
+
+# 3) Dispatch
+case "$1" in
+  --status)  get_status    ;;
+  --song)    get_title     ;;
+  --artist)  get_artist    ;;
+  --time)    get_progress  ;;
+  --ctime)   fmt_time "$(get_position)"  ;;
+  --ttime)   fmt_time "$(get_duration)"  ;;
+  --cover)   get_cover     ;;
+  --toggle)  playerctl -p "$PLAYER" play-pause ;;
+  --next)    playerctl -p "$PLAYER" next     && get_cover ;;
+  --prev)    playerctl -p "$PLAYER" previous && get_cover ;;
+  --seek)    seek_percent "$2" ;;
+  *)
+    echo "Usage: $0 [--status|--song|--artist|--time|--ctime|--ttime|--cover|--toggle|--next|--prev]" >&2
+    exit 2
+    ;;
+esac

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+eww open bar
+sh ~/.config/eww/scripts/bar/brightness_icon
+sh ~/.config/eww/scripts/bar/volume_icon
+sh ~/.config/eww/scripts/bar/mic_icon
