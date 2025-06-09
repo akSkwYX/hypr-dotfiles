@@ -23,17 +23,17 @@
   ];
 
   home.file = {
-    "~/.config/hypr" = {
+    ".config/hypr" = {
       source = ./conf/hypr/confFiles;
       recursive = true;
     };
 
-    "~/.config/rofi" = {
+    ".config/rofi" = {
       source = ./conf/rofi/confFiles;
       recursive = true;
     };
 
-    "~/.config/eww" = {
+    ".config/eww" = {
       source = ./conf/eww/confFiles;
       recursive = true;
     };
