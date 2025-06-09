@@ -2,6 +2,8 @@
 {
   imports = [
     ./conf/hypr/scripts/scripts.nix
+    ./conf/rofi/scripts/scripts.nix
+    ./conf/eww/scripts/scripts.nix
   ];
 
   wayland.windowManager.hyprland = {
@@ -21,13 +23,18 @@
   ];
 
   home.file = {
-    ".config/hypr" = {
+    "~/.config/hypr" = {
       source = ./conf/hypr/confFiles;
       recursive = true;
     };
 
-    ".config/rofi" = {
+    "~/.config/rofi" = {
       source = ./conf/rofi/confFiles;
+      recursive = true;
+    };
+
+    "~/.config/eww" = {
+      source = ./conf/eww/confFiles;
       recursive = true;
     };
   };
