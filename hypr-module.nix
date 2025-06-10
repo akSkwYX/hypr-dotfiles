@@ -16,6 +16,7 @@
     hyprlock
     hypridle
     eww
+    amixer
     libnotify
     swaynotificationcenter
     rofi-wayland
