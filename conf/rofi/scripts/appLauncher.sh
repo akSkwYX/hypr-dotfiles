@@ -4,7 +4,7 @@
 #  ┗┛┛┗┗┛┛┗┗┛┛┗┗┛┛┗
 
 
-dir="$HOME/.config/rofi/launcher"
+dir="$HOME/.config/rofi/appLauncher"
 theme='base'
 
 ## Run

@@ -4,7 +4,6 @@ configuration {
     display-drun:               " ";
     display-run:                " ";
     display-window:             " ";
-    display-emoji:              " ";
     drun-display-format:        "{name}";
     window-format:              "{w} · {c} · {t}";
 }
@@ -40,7 +39,7 @@ mainbox {
 img {
     border-radius:              15px;
     background-color:           transparent;
-    background-image:           url("~/Pictures/rofiPic/Miascarade_dark.jpg", height);
+    background-image:           url("~/.config/rofi/images/appLauncher.jpg", height);
 }
 
 

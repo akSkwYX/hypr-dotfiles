@@ -1,0 +1,38 @@
+@import "~/.config/rofi/themes/colors.rasi"
+@import "~/.config/rofi/themes/fonts.rasi"
+
+window {
+    location: center;
+    width: 30%;
+    child: [ "textbox-pixmap"; "mainbox" ];
+}
+
+textbox-pixmap {
+    padding: 12px;
+    pixmap: "~/.config/rofi/images/powerLauncher.jpg";
+}
+
+mainbox {
+    orientation: vertical;
+    spacing: 4px;
+    children: [ "listview" ];
+}
+
+listview {
+    columns: 5;
+    lines: 1;
+    fixed-height: 50px;
+    fixed-width: 50px;
+    horizontal-align: center;
+    vertical-align: center;
+    scrollbar: false;
+}
+
+element {
+    padding: 6px;
+}
+
+element selected {
+    background-color: @selected;
+    color: @background;
+}
