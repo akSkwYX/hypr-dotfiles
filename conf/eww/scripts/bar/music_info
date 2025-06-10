@@ -3,7 +3,7 @@
 # music_info — expose play status, metadata & cover art via playerctl
 #
 CACHE_COVER="/tmp/.music_cover.png"
-DEFAULT_COVER="$HOME/.config/eww/images/music.png"
+DEFAULT_COVER="$HOME/.config/eww/images/placeholder_cover.png"
 
 # 1) Pick a player: first running (Playing or Paused)
 PLAYER=""

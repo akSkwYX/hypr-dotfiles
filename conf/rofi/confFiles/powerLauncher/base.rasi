@@ -4,7 +4,7 @@
 window {
     location: center;
     width: 30%;
-    child: [ "textbox-pixmap"; "mainbox" ];
+    child: [ "textbox-pixmap", "mainbox" ];
 }
 
 textbox-pixmap {
