@@ -5,7 +5,7 @@ theme='base'
 
 entries="\n\n\n\n"
 
-chosen=$(echo -e "entries" \
+chosen=$(echo -e "$entries" \
           | rofi -dmenu \
                  -theme ${dir}/${theme}.rasi \
                  -p '' \

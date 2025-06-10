@@ -2,14 +2,22 @@
 @import "~/.config/rofi/themes/fonts.rasi"
 
 window {
-    location: center;
-    width: 30%;
-    child: [ "textbox-pixmap", "mainbox" ];
+    transparency:               "real";
+    cursor:                     "default";
+    background-color:           black / 80%;
+    border-color:               @selected;
+    location:                   center;
+    anchor:                     center;
+    border:                     1px;
+    border-radius:              15px;
+    width:                      690px;
+    child: [ "img", "mainbox" ];
 }
 
-textbox-pixmap {
-    padding: 12px;
-    pixmap: "~/.config/rofi/images/powerLauncher.jpg";
+img {
+    border-radius: 5px;
+    background-color: transparent;
+    background-image: "~/.config/rofi/images/powerLauncher.jpg";
 }
 
 mainbox {
@@ -28,11 +36,38 @@ listview {
     scrollbar: false;
 }
 
+/* ---- Elements ---- */
 element {
-    padding: 6px;
+    cursor:                     pointer;
+    spacing:                    15px;
+    background-color:           transparent;
+    border-radius:              10px;
+    padding:                    12px;
 }
 
-element selected {
-    background-color: @selected;
-    color: @background;
+element-text {
+    vertical-align:              0.5;
+    cursor:                      inherit;
+    background-color:            transparent;
+    text-color:                  inherit;
+}
+
+element-icon {
+    size:                        30px;
+    cursor:                      inherit;
+    background-color:            transparent;
+    text-color:                  inherit;
+}
+
+element normal.normal,
+element alternate.normal {
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+
+element selected.normal {
+    background-color:            white/12%;
+    text-color:                  white;
+    border:                      2px solid;
+    border-color:                @selected;
 }
