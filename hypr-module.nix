@@ -6,10 +6,6 @@
     ./conf/eww/scripts/scripts.nix
   ];
 
-  wayland.windowManager.hyprland = {
-    enable = true;
-  };
-
   # Dependencies :
   home.packages = with pkgs; [
     hyprpaper
