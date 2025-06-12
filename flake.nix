@@ -7,7 +7,7 @@
   };
 
   outputs = { self, nixpkgs, hyprland, ... }: {
-    hyprpkg = hyprland.packages."${system}".hyprland;
+    hyprpkg = hyprland.packages."x86_64-linux".hyprland;
     homeModules.default = import ./hypr-module.nix;
   };
 }
