@@ -18,16 +18,16 @@
     devShells.default.hypr = pkgs.mkShell {
       buildInputs = [
         hyprpkg
-        hyprpaper
-        hyprlock
-        hypridle
-        eww
-        alsa-utils
-        libnotify
-        swaynotificationcenter
-        rofi-wayland
-        brightnessctl
-        playerctl
+        pkgs.hyprpaper
+        pkgs.hyprlock
+        pkgs.hypridle
+        pkgs.eww
+        pkgs.alsa-utils
+        pkgs.libnotify
+        pkgs.swaynotificationcenter
+        pkgs.rofi-wayland
+        pkgs.brightnessctl
+        pkgs.playerctl
       ];
       shellHook = ''
         echo "Entered HyprTest shell"
