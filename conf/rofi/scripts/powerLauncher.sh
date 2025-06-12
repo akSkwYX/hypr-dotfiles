@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-dir="$HOME/.config/rofi/powerLauncher"
+dir="${XDG_CONFIG_HOME:-$HOME/.config}/rofi/powerLauncher"
 theme='base'
 
 entries="\n\n\n\n"

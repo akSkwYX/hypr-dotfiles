@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-dir="$HOME/.config/rofi/wallLauncher"
+dir="${XDG_CONFIG_HOME:-$HOME/.config}/rofi/wallLauncher"
 theme='base'
 
 ## Run

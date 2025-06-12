@@ -4,7 +4,7 @@
 #  ┗┛┛┗┗┛┛┗┗┛┛┗┗┛┛┗
 
 
-dir="$HOME/.config/rofi/appLauncher"
+dir="${XDG_CONFIG_HOME:-$HOME/.config}/rofi/appLauncher"
 theme='base'
 
 ## Run
