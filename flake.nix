@@ -2,12 +2,18 @@
   description = "My Hypr environment configuration as a flake module";
 
   inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = { self, hyprland, ... }: {
+  outputs = { self, nixpkgs, hyprland, ... }: let
+    system = "x86_64-linux";
+    pkgs = import nixpkgs { inherit system; };
+    hyprpkg = hyprland.packages."${system}".hyprland;
+  in {
     homeModules.default = import ./hypr-module.nix;
-    hyprpkg = hyprland.packages."x86_64-linux".hyprland;
+
+    hyprpkg = hyprpkg;
 
     devShells.default.hypr = pkgs.mkShell {
       buildInputs = [
