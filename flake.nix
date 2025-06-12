@@ -31,9 +31,16 @@
       ];
       shellHook = ''
         echo "Entered HyprTest shell"
-        echo "Config root : $HOME/.test"
-        echo "Real config : $HOME/.config"
-        export XDG_CONFIG_HOME="$HOME/.test"
+        echo "Usage : withTestConfig <command> execute <command> with .test environment"
+
+        withTestConfig() {
+          if [ $# -eq 0 ]; then
+            echo "Usage: withTestConfig <command> [args…]" >&2
+            return 1
+          fi
+          XDG_CONFIG_HOME="$HOME/.test" "$@"
+        }
+
         mkdir -p "$XDG_CONFIG_HOME"/{hypr,rofi,eww}
       '';
     };
