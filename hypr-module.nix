@@ -1,5 +1,6 @@
 { pkgs, config, ... }:
 let python_dependencies = pkgs.python313.withPackages (ps: with ps; [
+      matplotlib
       aubio
       pyaudio
       numpy
@@ -28,6 +29,7 @@ in
     pkgs.ddcutil
     pkgs.brightnessctl
     pkgs.imagemagick
+    pkgs.material-symbols
     python_dependencies
   ];
 
