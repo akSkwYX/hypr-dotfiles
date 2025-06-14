@@ -31,6 +31,9 @@ in
     pkgs.brightnessctl
     pkgs.imagemagick
     pkgs.material-symbols
+    pkgs.cliphist
+    pkgs.fuzzel
+    pkgs.xdg-user-dirs
     python_dependencies
   ];
 

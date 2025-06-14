@@ -1,9 +1,0 @@
-#!/bin/bash
-
-if [[ $1 == 0 ]]; then
-   eww update volume_icon=""
-elif [[ $1 < 50 ]]; then
-   eww update volume_icon=""
-else
-   eww update volume_icon=""
-fi
