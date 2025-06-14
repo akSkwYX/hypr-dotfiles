@@ -21,6 +21,7 @@ in
     pkgs.hypridle
     pkgs.curl
     pkgs.jq
+    pkgs.ibm-plex
     pkgs.app2unit
     pkgs.fd
     pkgs.cava
