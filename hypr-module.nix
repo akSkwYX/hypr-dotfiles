@@ -4,6 +4,7 @@
     ./conf/hypr/scripts/scripts.nix
     ./conf/rofi/scripts/scripts.nix
     ./conf/eww/scripts/scripts.nix
+    ./conf/shell/scripts/scripts.nix
   ];
 
   # Dependencies :
@@ -11,13 +12,22 @@
     hyprpaper
     hyprlock
     hypridle
-    eww
-    alsa-utils
-    libnotify
-    swaynotificationcenter
-    rofi-wayland
+    quickshell
+    curl
+    jq
+    app2unit
+    fd
+    python313.withPackages (ps: with ps; [
+      aubio
+      pyaudio
+      numpy
+    ])
+    cava
+    networkmanager
+    bluez
+    ddcutil
     brightnessctl
-    playerctl
+    imagemagick
   ];
 
   home.file = {
@@ -35,5 +45,10 @@
       source = ./conf/eww/confFiles;
       recursive = true;
     };
+
+    ".config/quickshell" = {
+      source = ./conf/quickshell/confFiles;
+      recursive = true;
+    }
   };
 }
