@@ -6,7 +6,7 @@ script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$script_dir/util.sh"
 
 # Defaults
-wallpapers_dir="$(xdg-user-dir PICTURES)/Wallpapers"
+wallpapers_dir="$(xdg-user-dir)/Pictures/Wallpapers"
 threshold=80
 theme=""
 no_filter=false

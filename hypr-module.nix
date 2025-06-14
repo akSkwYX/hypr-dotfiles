@@ -8,7 +8,6 @@ let python_dependencies = pkgs.python313.withPackages (ps: with ps; [
 in
 {
   imports = [
-    ./conf/hypr/scripts/scripts.nix
     ./conf/quickshell/scripts/scripts.nix
   ];
 
@@ -32,6 +31,7 @@ in
     pkgs.cliphist
     pkgs.fuzzel
     pkgs.xdg-user-dirs
+    pkgs.grim
     python_dependencies
   ];
 
