@@ -12,7 +12,6 @@
     hyprpaper
     hyprlock
     hypridle
-    quickshell
     curl
     jq
     app2unit
