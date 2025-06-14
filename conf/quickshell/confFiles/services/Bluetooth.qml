@@ -37,7 +37,16 @@ Singleton {
     Process {
         id: getDevices
         running: true
-        command: ["fish", "-c", `for a in (bluetoothctl devices | cut -d ' ' -f 2); bluetoothctl info $a | jq -R 'reduce (inputs / ":") as [$key, $value] ({}; .[$key | ltrimstr("\t")] = ($value | ltrimstr(" ")))' | jq -c --arg addr $a '.Address = $addr'; end | jq -sc`]
+        command: ["sh", "-c", `
+                 for addr in $(bluetoothctl devices | cut -d " " -f 2); do
+                   bluetoothctl info "$addr" |
+                   jq -R '
+                     reduce (inputs / ":") as [$key, $value]
+                     ({}; .[$key | ltrimstr("\t")] = ($value | ltrimstr(" ")))
+                   ' |
+                   jq -c --arg addr "$addr" ".Address = \$addr"
+                 done | jq -sc
+                  `]
         stdout: SplitParser {
             onRead: data => {
                 const devices = JSON.parse(data).filter(d => d.Name);

@@ -138,7 +138,7 @@ Singleton {
         id: cpuTemp
 
         running: true
-        command: ["fish", "-c", "cat /sys/class/thermal/thermal_zone*/temp | string join ' '"]
+        command: ["sh", "-c", "cat /sys/class/thermal/thermal_zone*/temp | string join ' '"]
         stdout: SplitParser {
             onRead: data => {
                 const temps = data.trim().split(" ");

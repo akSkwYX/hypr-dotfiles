@@ -59,6 +59,6 @@ if [[ -f "$C_STATE/scheme/current-name.txt" ]]; then
       sel_variant="default"
     fi
     # Apply scheme: pass MODE through environment
-    MODE="${MODE:-}" "$script_dir/main.fish" dynamic "$sel_variant" "$MODE" >/dev/null
+    MODE="${MODE:-}" "$script_dir/main.sh" dynamic "$sel_variant" "$MODE" >/dev/null
   fi
 fi

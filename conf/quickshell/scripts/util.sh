@@ -61,11 +61,11 @@ set_config() {
 : "${XDG_CACHE_HOME:=$HOME/.cache}"
 : "${XDG_CONFIG_HOME:=$HOME/.config}"
 
-C_DATA="$XDG_DATA_HOME/caelestia"
-C_STATE="$XDG_STATE_HOME/caelestia"
-C_CACHE="$XDG_CACHE_HOME/caelestia"
+C_DATA="$XDG_DATA_HOME/quickshell"
+C_STATE="$XDG_STATE_HOME/quickshell"
+C_CACHE="$XDG_CACHE_HOME/quickshell"
 CONFIG="$XDG_CONFIG_HOME"
-C_CONFIG="$CONFIG/caelestia"
+C_CONFIG="$CONFIG/quickshell"
 C_CONFIG_FILE="$C_CONFIG/scripts.json"
 
 # Ensure directories exist

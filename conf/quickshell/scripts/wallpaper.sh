@@ -140,7 +140,7 @@ if [[ -z "$theme" ]]; then
 fi
 
 # Generate colour scheme in background
-MODE="$theme" "$script_dir/scheme/gen-scheme.fish" &
+MODE="$theme" "$script_dir/scheme/gen-scheme.sh" &
 
 # Apply the wallpaper
 # (Use swaybg/hyprpaper or your compositor’s command here; example for swaybg:)
