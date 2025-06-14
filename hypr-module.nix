@@ -4,7 +4,7 @@
     ./conf/hypr/scripts/scripts.nix
     ./conf/rofi/scripts/scripts.nix
     ./conf/eww/scripts/scripts.nix
-    ./conf/shell/scripts/scripts.nix
+    ./conf/quickshell/scripts/scripts.nix
   ];
 
   # Dependencies :
