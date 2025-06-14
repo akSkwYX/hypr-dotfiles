@@ -14,21 +14,22 @@ in
   ];
 
   # Dependencies :
-  home.packages = with pkgs; [
-    hyprpaper
-    hyprlock
-    hypridle
-    curl
-    jq
-    app2unit
-    fd
-    cava
-    networkmanager
-    bluez
-    ddcutil
-    brightnessctl
-    imagemagick
-  ] ++ python_dependencies;
+  home.packages = [
+    pkgs.hyprpaper
+    pkgs.hyprlock
+    pkgs.hypridle
+    pkgs.curl
+    pkgs.jq
+    pkgs.app2unit
+    pkgs.fd
+    pkgs.cava
+    pkgs.networkmanager
+    pkgs.bluez
+    pkgs.ddcutil
+    pkgs.brightnessctl
+    pkgs.imagemagick
+    python_dependencies
+  ];
 
   home.file = {
     ".config/hypr" = {
