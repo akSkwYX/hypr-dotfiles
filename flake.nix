@@ -12,7 +12,7 @@
 
   outputs = { self, nixpkgs, hyprland, quickshell, ... }: {
     hyprpkg = hyprland.packages."x86_64-linux".hyprland;
-    quickshell.packages."x86_64-linux".default;
+    quickshellpkgs = quickshell.packages."x86_64-linux".default;
     homeModules.default = import ./hypr-module.nix;
   };
 }
