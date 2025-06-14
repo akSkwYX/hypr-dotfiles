@@ -49,6 +49,6 @@
     ".config/quickshell" = {
       source = ./conf/quickshell/confFiles;
       recursive = true;
-    }
+    };
   };
 }
