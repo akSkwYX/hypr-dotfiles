@@ -7,12 +7,12 @@
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
-    }
+    };
   };
 
   outputs = { self, nixpkgs, hyprland, quickshell, ... }: {
     hyprpkg = hyprland.packages."x86_64-linux".hyprland;
-    quickshellpkg = quickshell.packages."x86_64-linux".default;
+    quickshell.packages."x86_64-linux".default;
     homeModules.default = import ./hypr-module.nix;
   };
 }
