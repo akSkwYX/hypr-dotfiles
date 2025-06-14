@@ -1,4 +1,10 @@
 { pkgs, config, ... }:
+let python_dependencies = pkgs.python313.withPackages (ps: with ps; [
+      aubio
+      pyaudio
+      numpy
+    ]);
+in
 {
   imports = [
     ./conf/hypr/scripts/scripts.nix
@@ -16,18 +22,13 @@
     jq
     app2unit
     fd
-    python313.withPackages (ps: with ps; [
-      aubio
-      pyaudio
-      numpy
-    ])
     cava
     networkmanager
     bluez
     ddcutil
     brightnessctl
     imagemagick
-  ];
+  ] ++ python_dependencies;
 
   home.file = {
     ".config/hypr" = {
