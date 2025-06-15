@@ -37,7 +37,7 @@ Singleton {
     Process {
         id: getDevices
         running: true
-        command: ["sh", "-c", "for addr in $(bluetoothctl devices | cut -d " " -f 2); do
+        command: ["sh", "-c", "for addr in $(bluetoothctl devices | cut -d \" \" -f 2); do
                    bluetoothctl info \"$addr\" |
                    jq -R '
                      reduce (inputs / \":\") as [$key, $value]
