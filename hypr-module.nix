@@ -37,6 +37,10 @@ in
     python_dependencies
   ];
 
+  home.sessionVariables = {
+    XDG_SESSION_DESKTOP = "Hyprland";
+  };
+
   home.file = {
     ".config/hypr" = {
       source = ./conf/hypr/confFiles;
