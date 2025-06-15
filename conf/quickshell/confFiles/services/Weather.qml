@@ -19,8 +19,7 @@ Singleton {
         id: wttrProc
 
         running: true
-        command: ["sh", "-c", `city=$(curl -s ipinfo.io | jq -r ".city" | sed "s/ /%20/g") curl -s "https://wttr.in/${city}?format=j1" | jq -c ".current_condition[0] | {code: .weatherCode, desc: .weatherDesc[0].value, temp: .temp_C}"
-`]
+        command: ["sh", "-c", "city=$(curl -s ipinfo.io | jq -r \".city\" | sed \"s/ /%20/g\") curl -s \"https://wttr.in/${city}?format=j1\" | jq -c \".current_condition[0] | {code: .weatherCode, desc: .weatherDesc[0].value, temp: .temp_C}\""]
         stdout: SplitParser {
             onRead: data => {
                 const json = JSON.parse(data);
