@@ -32,8 +32,6 @@ in
     pkgs.fuzzel
     pkgs.xdg-user-dirs
     pkgs.grim
-    pkgs.upower
-    pkgs.power-profiles-daemon
     python_dependencies
   ];
 
