@@ -25,7 +25,7 @@ Singleton {
         running: true
         command: [
            "sh", "-c",
-           "nmcli -g ACTIVE,SIGNAL,FREQ,SSID,BSSID device wifi | jq -ncR '[inputs | split(\"(?<!\\\\):\"; \"g\") | select(.[3] | length >= 4)]'"]
+           "nmcli -g ACTIVE,SIGNAL,FREQ,SSID,BSSID device wifi | awk -F: 'length($4) >= 4' | jq -R -s -c 'split(\"\\n\")[:-1] | map(split(\":\"))'"]
         stdout: SplitParser {
             onRead: data => {
                 const networks = JSON.parse(data).map(n => [n[0] === "yes", parseInt(n[1]), parseInt(n[2]), n[3], n[4].replace(/\\/g, "")]);
