@@ -5,6 +5,7 @@ import "root:/widgets"
 import Quickshell
 import Quickshell.Io
 import QtQuick
+import Quickshell.Hyprland
 
 Singleton {
     id: root
@@ -68,12 +69,12 @@ Singleton {
         id: setProc
     }
 
-    CustomShortcut {
+    GlobalShortcut {
         name: "brightnessUp"
         onPressed: root.increaseBrightness()
     }
 
-    CustomShortcut {
+    GlobalShortcut {
         name: "brightnessDown"
         onPressed: root.decreaseBrightness()
     }

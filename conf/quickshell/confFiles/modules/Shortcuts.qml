@@ -2,13 +2,14 @@ import "root:/widgets"
 import "root:/services"
 import Quickshell
 import Quickshell.Io
+import Quickshell.Hyprland
 
 Scope {
     id: root
 
     property bool launcherInterrupted
 
-    CustomShortcut {
+    GlobalShortcut {
         name: "showall"
         description: "Toggle launcher, dashboard and osd"
         onPressed: {
@@ -17,7 +18,7 @@ Scope {
         }
     }
 
-    CustomShortcut {
+    GlobalShortcut {
         name: "session"
         description: "Toggle session menu"
         onPressed: {
@@ -26,7 +27,7 @@ Scope {
         }
     }
 
-    CustomShortcut {
+    GlobalShortcut {
         name: "launcher"
         description: "Toggle launcher"
         onPressed: root.launcherInterrupted = false
@@ -39,7 +40,7 @@ Scope {
         }
     }
 
-    CustomShortcut {
+    GlobalShortcut {
         name: "launcherInterrupt"
         description: "Interrupt launcher keybind"
         onPressed: root.launcherInterrupted = true

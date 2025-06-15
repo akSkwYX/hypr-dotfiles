@@ -5,6 +5,7 @@ import "root:/widgets"
 import "root:/config"
 import Quickshell
 import Quickshell.Io
+import Quickshell.Hyprland
 import Quickshell.Services.Notifications
 import QtQuick
 
@@ -34,7 +35,7 @@ Singleton {
         }
     }
 
-    CustomShortcut {
+    GlobalShortcut {
         name: "clearNotifs"
         description: "Clear all notifications"
         onPressed: {
