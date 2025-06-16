@@ -5,5 +5,5 @@
       source = ./confFiles;
       recursive = true;
     };
-  }
+  };
 }
