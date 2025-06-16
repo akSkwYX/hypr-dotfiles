@@ -8,7 +8,8 @@ let python_dependencies = pkgs.python313.withPackages (ps: with ps; [
 in
 {
   imports = [
-    ./conf/quickshell/scripts/scripts.nix
+    ./conf/hypr/hypr.nix
+    ./conf/quickshell/quickshell.nix
   ];
 
   # Dependencies :
@@ -32,22 +33,11 @@ in
     pkgs.fuzzel
     pkgs.xdg-user-dirs
     pkgs.grim
+    pkgs.libnotify
     python_dependencies
   ];
 
   home.sessionVariables = {
     XDG_SESSION_DESKTOP = "Hyprland";
-  };
-
-  home.file = {
-    ".config/hypr" = {
-      source = ./conf/hypr/confFiles;
-      recursive = true;
-    };
-
-    ".config/quickshell" = {
-      source = ./conf/quickshell/confFiles;
-      recursive = true;
-    };
   };
 }
