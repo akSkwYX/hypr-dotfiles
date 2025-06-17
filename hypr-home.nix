@@ -1,5 +1,6 @@
 { pkgs, config, ... }:
 let python_dependencies = pkgs.python313.withPackages (ps: with ps; [
+      materialyoucolor
       matplotlib
       aubio
       pyaudio
