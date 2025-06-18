@@ -22,6 +22,11 @@
     };
 
     ".config/quickshell/services" = {
+      source = ./confFiles/services;
+      recursive = true;
+    };
+
+    ".config/quickshell/utils" =  {
       source = ./confFiles/utils;
       recursive = true;
     };
@@ -33,11 +38,6 @@
 
     ".config/quickshell/shell.qml" = {
       source = ./confFiles/shell.qml;
-    };
-
-    ".config/quickshell/config" = {
-      source = ./confFiles/config;
-      recursive = true;
     };
   };
 }
